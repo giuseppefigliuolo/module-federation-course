@@ -18,7 +18,6 @@ function Copyright() {
       <MaterialLink component={Link} to="/" color="inherit">
         Your Website
       </MaterialLink>{' '}
-      <p>Ciao111</p>
       {new Date().getFullYear()}
       {'.'}
     </Typography>
