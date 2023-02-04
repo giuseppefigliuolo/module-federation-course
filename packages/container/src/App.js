@@ -5,6 +5,7 @@ export default () => {
   return (
     <div>
       <p>Ciaoooo</p>
+      <p>Ciaoooo</p>
       <MarketingApp />
     </div>
   )
