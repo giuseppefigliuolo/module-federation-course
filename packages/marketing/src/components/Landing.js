@@ -72,7 +72,6 @@ export default function Album() {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            <p>CIAOOONE</p>
             <Typography
               component="h1"
               variant="h2"
