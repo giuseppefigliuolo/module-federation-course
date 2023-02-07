@@ -30,7 +30,7 @@ const mount = (el, { onNavigate, defaultHistory }) => {
 
 // if we are in development and in isolation, call mount immediately
 if (process.env.NODE_ENV === 'development') {
-  const devRoot = document.querySelector('#_marketing-dev-root')
+  const devRoot = document.querySelector('#_auth-dev-root')
 
   // if we run marketing in isolation we wanna call a browserHistory and not a memory history (perchè in isolation non c'è conflitto con altre app)
   if (devRoot) mount(devRoot, { defaultHistory: createBrowserHistory() })
