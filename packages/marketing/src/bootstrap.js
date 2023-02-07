@@ -4,9 +4,13 @@ import { createMemoryHistory, createBrowserHistory } from 'history'
 import App from './App'
 
 // mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory }) => {
+const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
   // default history (browser history in questo caso) è per marketing run in isolation, se non c'è allora si usa la memory history
-  const history = defaultHistory || createMemoryHistory()
+  const history =
+    defaultHistory ||
+    createMemoryHistory({
+      initialEntries: [initialPath]
+    })
 
   //whenever a navigation occurs we have to call onNavigate function -> history.listen()
   if (onNavigate) {

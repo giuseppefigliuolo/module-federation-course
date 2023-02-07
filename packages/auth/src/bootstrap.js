@@ -4,9 +4,14 @@ import { createMemoryHistory, createBrowserHistory } from 'history'
 import App from './App'
 
 // mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory }) => {
+const mount = (el, { onSignIn, onNavigate, defaultHistory, initialPath }) => {
   // default history (browser history in questo caso) è per marketing run in isolation, se non c'è allora si usa la memory history
-  const history = defaultHistory || createMemoryHistory()
+  const history =
+    defaultHistory ||
+    createMemoryHistory({
+      // specifichiamo il path iniziale, e glielo passiamo da AuthApp dentro il container tramite history.location.path quando lanciamo la funzione di mount
+      initialEntries: [initialPath]
+    })
 
   //whenever a navigation occurs we have to call onNavigate function -> history.listen()
   if (onNavigate) {
@@ -14,7 +19,7 @@ const mount = (el, { onNavigate, defaultHistory }) => {
   }
 
   // passiamo history come memoria dove vengono salvati i dati di navigazione dentro il componente App
-  ReactDOM.render(<App history={history} />, el)
+  ReactDOM.render(<App onSignIn={onSignIn} history={history} />, el)
 
   return {
     // quando il container fa della navigazione - i parametri, compreso pathname, li riceviamo da history.listen() che invocherà la nostra funzione in MarketingApp
